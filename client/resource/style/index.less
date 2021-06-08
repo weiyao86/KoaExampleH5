@@ -1,0 +1,39 @@
+@color:#000;
+.wrap{
+  color:@color;
+  display: flex;
+  width:300px;
+  height:300px;
+  }
+
+  .star {
+    display: inline-block;
+    margin-left: 0.5rem;
+    transform: scale(1.25);
+    width: 300px;
+    height:300px;
+    background: url('../image/test.png')no-repeat center transparent;
+  }
+  .star-enter {
+    opacity: 0.01;
+    transform: translateX(-100%) scale(0.75);
+  }
+  .star-enter-active {
+    opacity: 1;
+    transform: translateX(0%) scale(1.25);
+    transition: all 300ms ease-out;
+  }
+  .star-exit {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  .star-exit-active {
+    // opacity: 0;
+    transform: translateX(-100%) scale(4);
+    transition: all 300ms ease-in;
+  }
+  .test{
+    background: url('../image/test.png')no-repeat center transparent;
+    width: 300px;
+    height:300px;
+  }

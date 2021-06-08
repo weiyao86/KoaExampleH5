@@ -148,3 +148,10 @@
  </html>
  ```
  ## 文件夹结构：
+## other 网络问题
+
+>>>1. yarn install
+
+>>>2.cnpm i image-webpack-loader
+
+**~~@babel/plugin-transform-regenerator~~**

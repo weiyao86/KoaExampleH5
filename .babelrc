@@ -16,7 +16,16 @@
     [
       "import", { "libraryName": "antd-mobile", "style": true}, "ant"
     ],
+    [
+      "import", { "libraryName": "antd","libraryDirectory": "lib",  "style": true}, "ant"
+    ],
+    ["import", {
+      "libraryName": "zarm",
+      "style": true // or 'css'
+    }],
     "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-regenerator",
     [
       "@babel/plugin-proposal-decorators",
       {
