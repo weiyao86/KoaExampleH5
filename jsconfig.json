@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+  }
+}
+// "baseUrl": ".",
+//     "paths": {
+//       "client": ["../client"],
+//       "library": ["../library"]
+//     },
+//     "emitDecoratorMetadata": true,
+//     "jsx": "preserve"
+//   },
+//   "exclude": ["node_modules", ".history"]

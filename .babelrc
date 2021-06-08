@@ -1,0 +1,29 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "useBuiltIns": "usage",
+        "debug": false,
+        "corejs": 3
+      }
+    ]
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    [
+      "import", { "libraryName": "antd-mobile", "style": true}, "ant"
+    ],
+    "@babel/plugin-syntax-dynamic-import",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    "@babel/plugin-proposal-class-properties"
+    
+  ]
+}
