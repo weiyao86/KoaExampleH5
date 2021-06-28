@@ -1,7 +1,6 @@
 const px2rem = require("postcss-pxtorem");
 module.exports = ({file})=>{
-  console.log('*******************')
-  console.log(file)
+
   return {
     plugins: [
       px2rem({
@@ -21,7 +20,7 @@ module.exports = ({file})=>{
         stage: 3,
       }),
       require('postcss-normalize')(),
-      require('cssnano')({ preset: ['default', { discardComments: { removeAll: true } }] }) //压缩css，去除所有注释
+      require('cssnano')({ preset: ['default', { discardComments: { removeAll: false } }] }) //压缩css，去除所有注释
     ]
   }
 };

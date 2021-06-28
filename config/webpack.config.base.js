@@ -106,9 +106,11 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [!IS_PROD && 'style-loader', IS_PROD && MiniCssExtractPlugin.loader, cssOptions,'postcss-loader'].filter(Boolean);
   if (preProcessor) {
     loaders.push(preProcessor);
-    loaders.push('filename-loader');
     console.log('**********loaders**************', loaders);
   }
+  //验证文件名
+  loaders.push('filename-loader');
+ 
   return loaders;
 };
 
@@ -158,8 +160,9 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        // exclude: /node_modules/,
-        use: getStyleLoaders('css-loader', 'less-loader'),
+        exclude: /node_modules/,
+        // use: getStyleLoaders('css-loader', 'less-loader'),
+        use: getStyleLoaders('css-loader', {loader:'less-loader',options:{lessOptions:{javascriptEnabled:true}}}),
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -209,6 +212,10 @@ module.exports = {
     alias: {
       '@Client': ClientDir,
     },
+  },
+  resolveLoader: {
+    modules: [path.join("../config/loader"), 'node_modules'],
+    
   },
   //创建web服务，缓存在内存中，改变文件自动更新
   // devServer:{
