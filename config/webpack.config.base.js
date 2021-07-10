@@ -59,12 +59,12 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 
 module.exports = {
   // 基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
-  context: ClientDir,
+  // context: ClientDir,
   //动态入口 （暂时没用--）
   // entry: () => ({ main: ['./index.js'], demo: ['./test.js'] }),
   entry: {
     // main: ['react-hot-loader/patch', './index.js']   //使用koa-webpack后带有热更新配置，此处禁用
-    main: ['./app.js'],
+    main: ['./client/app.js'],
   },
   output: {
     filename: IS_PROD ? '[name].[contenthash].js' : '[name].[hash:10].js', //'[name].[contenthash].js',
@@ -103,7 +103,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         // use: getStyleLoaders('css-loader', 'less-loader'),
         use: getStyleLoaders('css-loader', {loader:'less-loader',options:{lessOptions:{javascriptEnabled:true}}}),
       },
@@ -151,13 +151,13 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx','.less'],
     alias: {
       '@Client': ClientDir,
     },
   },
   resolveLoader: {
-    modules: [path.join("../config/loader"), 'node_modules'],
+    modules: [path.join("/config/loader"), 'node_modules'],
     
   },
   //创建web服务，缓存在内存中，改变文件自动更新

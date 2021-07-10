@@ -18,6 +18,7 @@ const backUrl = '/';
 //供接口使用
 const apiWrapHttp = {
   get(url, api) {
+    console.log('apiWrapHttp***')
     router.get(`${backUrl + url}`, api);
   },
   post(url, api) {
@@ -32,13 +33,14 @@ router.get('/redirect', async (ctx, next) => {
   console.log('***************redirect***************');
   await ctx.render('index');//views index.html
 });
-router.get('/login', async (ctx, next) => {
+// router.get('/login', async (ctx, next) => {
 
-  await ctx.render('login');//views index.html
-});
+//   await ctx.render('login');//views index.html
+// });
+router.get('/downloadFile',controller.base.downloadFile);
 
 router.get('/*', (ctx, next) => {
-
+console.log('last***')
   const ignores=['public','/favicon.ico'];
     if (ignores.some(p=>ctx.url.indexOf(p) != -1)) {
       return true;
