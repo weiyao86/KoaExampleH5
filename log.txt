@@ -1,0 +1,546 @@
+
+> KoaDemoH5@2.5.0 dev D:\E盘\wwwroot\react\KoaExampleH5
+> cross-env NODE_ENV=development node dev-server.js
+
+apiWrapHttp***
+当前核心数： 16
+****************process.env.NODE_ENV**********
+development
+D:\E盘\wwwroot\react\KoaExampleH5\config
+D:\E盘\wwwroot\react\KoaExampleH5\client
+D:\E盘\wwwroot\react\KoaExampleH5
+****************process.env.END**********
+**********loaders************** [ 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader' ]
+**********loaders************** [
+  'style-loader',
+  'css-loader',
+  'postcss-loader',
+  { loader: 'less-loader', options: { lessOptions: [Object] } }
+]
+服务器已启动，http://localhost:3000
+Happy[babel]: Version: 5.0.1. Threads: 16 (shared pool)
+Happy[babel]: All set; signaling webpack to proceed.
+i Compiling Webpack
+√ Webpack: Compiled successfully in 9.15s
+success
+[34mi[39m [90m｢wdm｣[39m: Hash: [1mad7c2571822041003b8c[39m[22m
+Version: webpack [1m4.46.0[39m[22m
+Time: [1m9680[39m[22mms
+Built at: 2021/07/10 [1m下午10:06:56[39m[22m
+                       [1mAsset[39m[22m      [1mSize[39m[22m          [1mChunks[39m[22m  [1m[39m[22m                       [1m[39m[22m[1mChunk Names[39m[22m
+         [1m[32mchunk.ad7c257182.js[39m[22m  17.5 MiB           [1mchunk[39m[22m  [1m[32m[emitted] [immutable][39m[22m  chunk
+                  [1m[32mindex.html[39m[22m  2.46 KiB                [1m[39m[22m  [1m[32m[emitted][39m[22m              
+          [1m[32mmain.ad7c257182.js[39m[22m   170 KiB            [1mmain[39m[22m  [1m[32m[emitted] [immutable][39m[22m  main
+     [1m[32mpagesHome.ad7c257182.js[39m[22m  86.9 KiB       [1mpagesHome[39m[22m  [1m[32m[emitted] [immutable][39m[22m  pagesHome
+[1m[32mpagesHomeModel.ad7c257182.js[39m[22m  4.51 KiB  [1mpagesHomeModel[39m[22m  [1m[32m[emitted] [immutable][39m[22m  pagesHomeModel
+     [1m[32mpagesMain.ad7c257182.js[39m[22m  22.3 KiB       [1mpagesMain[39m[22m  [1m[32m[emitted] [immutable][39m[22m  pagesMain
+[1m[32mpagesMainModel.ad7c257182.js[39m[22m  2.41 KiB  [1mpagesMainModel[39m[22m  [1m[32m[emitted] [immutable][39m[22m  pagesMainModel
+       [1m[32mruntime.ad7c257182.js[39m[22m  21.5 KiB         [1mruntime[39m[22m  [1m[32m[emitted] [immutable][39m[22m  runtime
+Entrypoint [1mmain[39m[22m = [1m[32mruntime.ad7c257182.js[39m[22m [1m[32mchunk.ad7c257182.js[39m[22m [1m[32mmain.ad7c257182.js[39m[22m
+[0] [1mmulti ./client/app.js[39m[22m 28 bytes {[1m[33mmain[39m[22m}[1m[32m [built][39m[22m
+[[1m./client/app.js[39m[22m] 3.79 KiB {[1m[33mmain[39m[22m}[1m[32m [built][39m[22m
+[[1m./client/models/index.js[39m[22m] 862 bytes {[1m[33mmain[39m[22m}[1m[32m [built][39m[22m
+[[1m./client/resource/style/frame.less[39m[22m] 492 bytes {[1m[33mmain[39m[22m}[1m[32m [built][39m[22m
+[[1m./client/resource/style/index.css[39m[22m] 435 bytes {[1m[33mmain[39m[22m}[1m[32m [built][39m[22m
+[[1m./client/resource/style/index.less[39m[22m] 492 bytes {[1m[33mmain[39m[22m}[1m[32m [built][39m[22m
+[[1m./client/resource/style/index.scss[39m[22m] 482 bytes {[1m[33mmain[39m[22m}[1m[32m [built][39m[22m
+[[1m./client/router/index.js[39m[22m] 2.56 KiB {[1m[33mmain[39m[22m}[1m[32m [built][39m[22m
+[[1m./client/views/layout/index.js[39m[22m] 12.7 KiB {[1m[33mmain[39m[22m}[1m[32m [built][39m[22m
+[[1m./node_modules/@babel/runtime/helpers/defineProperty.js[39m[22m] 367 bytes {[1m[33mchunk[39m[22m}[1m[32m [built][39m[22m
+[[1m./node_modules/core-js/modules/es.array.filter.js[39m[22m] 622 bytes {[1m[33mchunk[39m[22m}[1m[32m [built][39m[22m
+[[1m./node_modules/core-js/modules/es.object.get-own-property-descriptor.js[39m[22m] 771 bytes {[1m[33mchunk[39m[22m}[1m[32m [built][39m[22m
+[[1m./node_modules/core-js/modules/es.object.get-own-property-descriptors.js[39m[22m] 1020 bytes {[1m[33mchunk[39m[22m}[1m[32m [built][39m[22m
+[[1m./node_modules/core-js/modules/es.object.keys.js[39m[22m] 462 bytes {[1m[33mchunk[39m[22m}[1m[32m [built][39m[22m
+[[1m./node_modules/core-js/modules/es.symbol.js[39m[22m] 12.8 KiB {[1m[33mchunk[39m[22m}[1m[32m [built][39m[22m
+    + 1026 hidden modules
+Child [1mHtmlWebpackCompiler[39m[22m:
+                          [1mAsset[39m[22m      [1mSize[39m[22m               [1mChunks[39m[22m  [1m[39m[22m[1m[39m[22m[1mChunk Names[39m[22m
+    [1m[32m__child-HtmlWebpackPlugin_0[39m[22m  6.87 KiB  [1mHtmlWebpackPlugin_0[39m[22m  [1m[32m[39m[22mHtmlWebpackPlugin_0
+    Entrypoint [1mHtmlWebpackPlugin_0[39m[22m = [1m[32m__child-HtmlWebpackPlugin_0[39m[22m
+    [[1m./node_modules/html-webpack-plugin/lib/loader.js!./client/components/layout/index.html[39m[22m] 2.78 KiB {[1m[33mHtmlWebpackPlugin_0[39m[22m}[1m[32m [built][39m[22m
+下载流  come in
+[34mi[39m [90m｢wdm｣[39m: Compiled successfully.**
+[34mi[39m [90m｢wdm｣[39m: 请访问 http://127.0.0.1:3000 或 http://192.168.2.103:3000
+***文件流**** {
+  status: 200,
+  statusText: 'OK',
+  headers: {
+    server: 'AliyunOSS',
+    date: 'Sat, 10 Jul 2021 14:07:00 GMT',
+    'content-type': 'image/jpeg',
+    'content-length': '433456',
+    connection: 'close',
+    'x-oss-request-id': '60E9A984D1D8483532204E41',
+    'accept-ranges': 'bytes',
+    etag: '"C72A03BFA92EE8B79D89ABEEF52F09AE"',
+    'last-modified': 'Fri, 07 May 2021 09:17:15 GMT',
+    'x-oss-object-type': 'Normal',
+    'x-oss-hash-crc64ecma': '1485656476722476703',
+    'x-oss-storage-class': 'Standard',
+    'content-md5': 'xyoDv6ku6Lediavu9S8Jrg==',
+    'x-oss-server-time': '30'
+  },
+  config: {
+    url: 'http://gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com/export/gs_company/20210507/16203790356058tj2ar.jpeg',
+    method: 'get',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'User-Agent': 'axios/0.21.1'
+    },
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 20000,
+    adapter: [Function: httpAdapter],
+    responseType: 'stream',
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    validateStatus: [Function: validateStatus],
+    data: undefined
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      socket: [Function (anonymous)],
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      prefinish: [Function: requestOnPrefinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: false,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: false,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    _contentLength: 0,
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    socket: Socket {
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com',
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 8,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: null,
+      _server: null,
+      parser: [HTTPParser],
+      _httpMessage: [Circular *1],
+      timeout: 20000,
+      [Symbol(async_id_symbol)]: 127665,
+      [Symbol(kHandle)]: [TCP],
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 20000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 14503,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 127672,
+        [Symbol(triggerId)]: 127667
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(RequestTimeout)]: undefined
+    },
+    _header: 'GET /export/gs_company/20210507/16203790356058tj2ar.jpeg HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'User-Agent: axios/0.21.1\r\n' +
+      'Host: gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com\r\n' +
+      'Connection: close\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: noopPendingOutput],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 80,
+      protocol: 'http:',
+      options: [Object],
+      requests: {},
+      sockets: [Object],
+      freeSockets: {},
+      keepAliveMsecs: 1000,
+      keepAlive: false,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'fifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'GET',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    path: '/export/gs_company/20210507/16203790356058tj2ar.jpeg',
+    _ended: false,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 1,
+      _maxListeners: undefined,
+      socket: [Socket],
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: false,
+      headers: [Object],
+      rawHeaders: [Array],
+      trailers: {},
+      rawTrailers: [],
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 200,
+      statusMessage: 'OK',
+      client: [Socket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'http://gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com/export/gs_company/20210507/16203790356058tj2ar.jpeg',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(RequestTimeout)]: undefined
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: HTTPParser {
+      '1': [Function: parserOnHeaders],
+      '2': [Function: parserOnHeadersComplete],
+      '3': [Function: parserOnBody],
+      '4': [Function: parserOnMessageComplete],
+      '5': null,
+      '6': null,
+      _headers: [],
+      _url: '',
+      socket: [Socket],
+      incoming: [IncomingMessage],
+      outgoing: [Circular *1],
+      maxHeaderPairs: 2000,
+      _consumed: false,
+      onIncoming: [Function: parserOnIncomingClient],
+      [Symbol(resource_symbol)]: [HTTPClientAsyncResource]
+    },
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com',
+    protocol: 'http:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 0,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'http://gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com/export/gs_company/20210507/16203790356058tj2ar.jpeg',
+      _timeout: Timeout {
+        _idleTimeout: -1,
+        _idlePrev: null,
+        _idleNext: null,
+        _idleStart: 11000,
+        _onTimeout: null,
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: true,
+        [Symbol(refed)]: true,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 127671,
+        [Symbol(triggerId)]: 127667
+      },
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'user-agent': [Array],
+      host: [Array]
+    }
+  },
+  data: <ref *2> IncomingMessage {
+    _readableState: ReadableState {
+      objectMode: false,
+      highWaterMark: 16384,
+      buffer: BufferList { head: [Object], tail: [Object], length: 1 },
+      length: 8179,
+      pipes: [],
+      flowing: null,
+      ended: false,
+      endEmitted: false,
+      reading: false,
+      sync: true,
+      needReadable: false,
+      emittedReadable: false,
+      readableListening: false,
+      resumeScheduled: false,
+      errorEmitted: false,
+      emitClose: true,
+      autoDestroy: false,
+      destroyed: false,
+      errored: null,
+      closed: false,
+      closeEmitted: false,
+      defaultEncoding: 'utf8',
+      awaitDrainWriters: null,
+      multiAwaitDrain: false,
+      readingMore: true,
+      decoder: null,
+      encoding: null,
+      [Symbol(kPaused)]: null
+    },
+    _events: [Object: null prototype] { end: [Function: responseOnEnd] },
+    _eventsCount: 1,
+    _maxListeners: undefined,
+    socket: Socket {
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com',
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 8,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: null,
+      _server: null,
+      parser: [HTTPParser],
+      _httpMessage: [ClientRequest],
+      timeout: 20000,
+      [Symbol(async_id_symbol)]: 127665,
+      [Symbol(kHandle)]: [TCP],
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 20000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 14503,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 127672,
+        [Symbol(triggerId)]: 127667
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(RequestTimeout)]: undefined
+    },
+    httpVersionMajor: 1,
+    httpVersionMinor: 1,
+    httpVersion: '1.1',
+    complete: false,
+    headers: {
+      server: 'AliyunOSS',
+      date: 'Sat, 10 Jul 2021 14:07:00 GMT',
+      'content-type': 'image/jpeg',
+      'content-length': '433456',
+      connection: 'close',
+      'x-oss-request-id': '60E9A984D1D8483532204E41',
+      'accept-ranges': 'bytes',
+      etag: '"C72A03BFA92EE8B79D89ABEEF52F09AE"',
+      'last-modified': 'Fri, 07 May 2021 09:17:15 GMT',
+      'x-oss-object-type': 'Normal',
+      'x-oss-hash-crc64ecma': '1485656476722476703',
+      'x-oss-storage-class': 'Standard',
+      'content-md5': 'xyoDv6ku6Lediavu9S8Jrg==',
+      'x-oss-server-time': '30'
+    },
+    rawHeaders: [
+      'Server',
+      'AliyunOSS',
+      'Date',
+      'Sat, 10 Jul 2021 14:07:00 GMT',
+      'Content-Type',
+      'image/jpeg',
+      'Content-Length',
+      '433456',
+      'Connection',
+      'close',
+      'x-oss-request-id',
+      '60E9A984D1D8483532204E41',
+      'Accept-Ranges',
+      'bytes',
+      'ETag',
+      '"C72A03BFA92EE8B79D89ABEEF52F09AE"',
+      'Last-Modified',
+      'Fri, 07 May 2021 09:17:15 GMT',
+      'x-oss-object-type',
+      'Normal',
+      'x-oss-hash-crc64ecma',
+      '1485656476722476703',
+      'x-oss-storage-class',
+      'Standard',
+      'Content-MD5',
+      'xyoDv6ku6Lediavu9S8Jrg==',
+      'x-oss-server-time',
+      '30'
+    ],
+    trailers: {},
+    rawTrailers: [],
+    aborted: false,
+    upgrade: false,
+    url: '',
+    method: null,
+    statusCode: 200,
+    statusMessage: 'OK',
+    client: Socket {
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com',
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 8,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: null,
+      _server: null,
+      parser: [HTTPParser],
+      _httpMessage: [ClientRequest],
+      timeout: 20000,
+      [Symbol(async_id_symbol)]: 127665,
+      [Symbol(kHandle)]: [TCP],
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 20000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 14503,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 127672,
+        [Symbol(triggerId)]: 127667
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(RequestTimeout)]: undefined
+    },
+    _consuming: false,
+    _dumped: false,
+    req: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      socket: [Socket],
+      _header: 'GET /export/gs_company/20210507/16203790356058tj2ar.jpeg HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/0.21.1\r\n' +
+        'Host: gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: noopPendingOutput],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      path: '/export/gs_company/20210507/16203790356058tj2ar.jpeg',
+      _ended: false,
+      res: [Circular *2],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: [HTTPParser],
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com',
+      protocol: 'http:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype]
+    },
+    responseUrl: 'http://gsg-imgpvs.oss-cn-hangzhou.aliyuncs.com/export/gs_company/20210507/16203790356058tj2ar.jpeg',
+    redirects: [],
+    [Symbol(kCapture)]: false,
+    [Symbol(RequestTimeout)]: undefined
+  }
+}
+��ֹ������������(Y/N)? 

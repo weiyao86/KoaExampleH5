@@ -2,6 +2,8 @@ import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 // import {GlobalContext} from '@Client/components/globalContext';
 import { connect } from 'dva';
+import Zmage from 'react-zmage';
+import toolsPng from '../home/images/tools.png';
 import './style.less';
 
 //自定义指令
@@ -59,6 +61,7 @@ class Class extends React.Component {
 
     return (
       <>
+       <Zmage src={toolsPng}/>
         <p onClick={this.handleStar.bind(null, star)}>start</p>
         main
         <div className='star'>⭐</div>
