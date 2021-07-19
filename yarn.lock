@@ -8914,6 +8914,13 @@ react-tween-state@^0.1.5:
     raf "^3.1.0"
     tween-functions "^1.0.1"
 
+react-zmage@^0.8.5-beta.37:
+  version "0.8.5-beta.37"
+  resolved "https://registry.nlark.com/react-zmage/download/react-zmage-0.8.5-beta.37.tgz#a310a2ea273685021e098edd10505011b3f3b778"
+  integrity sha1-oxCi6ic2hQIeCY7dEFBQEbPzt3g=
+  dependencies:
+    classnames "^2.3.1"
+
 react@^16.5.2:
   version "16.14.0"
   resolved "https://registry.nlark.com/react/download/react-16.14.0.tgz?cache=0&sync_timestamp=1623082704991&other_urls=https%3A%2F%2Fregistry.nlark.com%2Freact%2Fdownload%2Freact-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
