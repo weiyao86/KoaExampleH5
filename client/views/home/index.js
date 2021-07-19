@@ -4,8 +4,6 @@ import QueueAnim from 'rc-queue-anim';
 import { Button,Modal, Progress } from 'antd';
 import React from 'react';
 import HtmlToPdf from '@Client/components/html-to-pdf';
-import toolsPng from './images/tools.png';
-import Zmage from 'react-zmage'
 // import { Picker, List, WhiteSpace } from 'antd-mobile';
 import './style.less';
 
@@ -207,7 +205,6 @@ this.setState({visible:!this.state.visible})
         <p>Some contents...</p>
       </Modal> */}
       {/* <img src={toolsPng} alt="" /> */}
-      <Zmage src={toolsPng}/>
       </>
     );
   }

@@ -2,18 +2,18 @@ import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 // import {GlobalContext} from '@Client/components/globalContext';
 import { connect } from 'dva';
-import Zmage from 'react-zmage';
+import Carousel,{ Modal, ModalGateway } from 'react-images'
 import toolsPng from '../home/images/tools.png';
 import './style.less';
 
 //自定义指令
-const withTest = props=>WrapCmp => {
+const withTest = props => WrapCmp => {
   console.log('p', this)
   debugger;
   // return <WrapCmp {...props}></WrapCmp>;
   return class extends React.Component {
     render() {
-     // {...this.props}
+      // {...this.props}
       return <div>test<WrapCmp {...props}></WrapCmp></div>
     }
   }
@@ -48,9 +48,9 @@ class Class extends React.Component {
   componentDidMount() {
     // console.log(this.context, 'context');
 
-    
+
     setTimeout(() => {
-      ReactDOM.createPortal(<div>test portal</div>,document.body);
+      ReactDOM.createPortal(<div>test portal</div>, document.body);
       this.props.history.push({ search: `{name:'jack',age:20}` });
       this.setState({})
     }, 2000);
@@ -61,7 +61,12 @@ class Class extends React.Component {
 
     return (
       <>
-       <Zmage src={toolsPng}/>
+      <ModalGateway>
+          <Modal>
+            <Carousel views={[{source:toolsPng},{source:toolsPng}]}  />
+          </Modal>
+        
+      </ModalGateway>
         <p onClick={this.handleStar.bind(null, star)}>start</p>
         main
         <div className='star'>⭐</div>
