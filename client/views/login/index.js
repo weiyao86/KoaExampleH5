@@ -1,9 +1,11 @@
 import React from 'react';
 import { message, Button, Avatar, Divider } from 'antd';
+import Modal from './modal';
 
 class Class extends React.Component {
   state = {
     imgUrl: '',
+    visible: false
   };
 
   downLoad = () => {
@@ -69,8 +71,24 @@ class Class extends React.Component {
     fs.readAsDataURL(file);
   };
 
+  onOpenModal = () => {
+    this.setState({ visible: true });
+    // setTimeout(()=>{
+    //   this.setState({ visible: false })
+    // },3000);
+  }
+
   render() {
-    const { imgUrl } = this.state;
+    const { imgUrl, visible } = this.state;
+    const cfg = {
+      visible,
+      content: '自定义modal',
+      title: 'title',
+      okText: '好的',
+      cancelText: '取消',
+      okPress: () => { this.setState({ visible: false }) },
+      cancelPress: () => { this.setState({ visible: false }) },
+    }
     return (
       <div>
         <label style={{ background: '#000', color: '#fff', padding: 20, margin: 20 }}>
@@ -87,6 +105,11 @@ class Class extends React.Component {
           下载流
         </a>
         <Divider plain>下载流</Divider>
+        <Divider plain>自定义Modal</Divider>
+        <Button type='primary' onClick={() => this.onOpenModal()}>
+          弹出Modal
+        </Button>
+        <Modal {...cfg}></Modal>
       </div>
     );
   }

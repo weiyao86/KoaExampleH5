@@ -1,7 +1,8 @@
 import { Link, Route } from 'dva/router';
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
-import { Button,Modal, Progress } from 'antd';
+import { Button, Modal, Progress } from 'antd';
+import { DialogPop } from 'weui-react-v2';
 import React from 'react';
 import HtmlToPdf from '@Client/components/html-to-pdf';
 // import { Picker, List, WhiteSpace } from 'antd-mobile';
@@ -48,7 +49,7 @@ class Class extends React.Component {
   state = {
     star: false,
     current: 0,
-    visible:false
+    visible: false
   };
 
   timeTotal = 5 * 1000;
@@ -81,7 +82,7 @@ class Class extends React.Component {
       let cur = sub / totalTime;
 
       let percentByms = percent * cur;
-      this.calcCount += percentByms-prev;
+      this.calcCount += percentByms - prev;
       this.setState({ current: this.calcCount });
 
       if (cur < 1) {
@@ -95,7 +96,7 @@ class Class extends React.Component {
         typeof cb == 'function' && cb(`进度条值:${percent}--总进度:${this.calcCount}---次数:${count}---块时间:${totalTime}`);
         next();
       }
-      
+
       prev = percentByms;
       count++;
     };
@@ -112,7 +113,7 @@ class Class extends React.Component {
     random.forEach((curPercent, idx) => {
       let curTime = (curPercent / 100) * this.timeTotal;
       queue.add(function (next) {
-        
+
         console.log(`当前步骤=>${idx + 1}`);
 
         self.doneByTime({
@@ -134,30 +135,39 @@ class Class extends React.Component {
     queue.trigger();
   };
 
-  onShowModal=()=>{
-this.setState({visible:!this.state.visible})
+  onShowModal = () => {
+    this.setState({ visible: !this.state.visible })
   }
 
-  componentDidMount(){
-    
+  componentDidMount() {
   }
 
   showModal = () => {
     // this.setIsModalVisible(true);
-    
     Modal.confirm();
+    // DialogPop({
+    //   title: '对话框标题',
+    //   children: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内',
+    //   onConfirm: () => {
+    //     return new Promise((resolve) => {
+    //       setTimeout(() => {
+    //         resolve(true);
+    //       }, 2000);
+    //     });
+    //   },
+    // });
   };
 
-   handleOk = () => {
+  handleOk = () => {
     this.setIsModalVisible(false);
   };
 
-   handleCancel = () => {
+  handleCancel = () => {
     this.setIsModalVisible(false);
   };
 
-  setIsModalVisible(type){
-    this.setState({visible:type});
+  setIsModalVisible(type) {
+    this.setState({ visible: type });
   }
 
   render() {
@@ -168,15 +178,15 @@ this.setState({visible:!this.state.visible})
         <QueueAnim
           // className="wrap-modal"
           animConfig={[
-            { left:['0%','100%'],opacity:[1,0] },
+            { left: ['0%', '100%'], opacity: [1, 0] },
           ]}
         >
-        {this.state.visible ? [<div key="a" className="wrap-modal" onClick={this.handleCancel}>进出场动画</div>] :null}
-        
+          {this.state.visible ? [<div key="a" className="wrap-modal" onClick={this.handleCancel}>进出场动画</div>] : null}
+
         </QueueAnim>
 
-          <Button onClick={() => this.onShowModal()}>进出场动画</Button>
-          <Button onClick={() => this.onStart()}>Progress</Button>
+        <Button onClick={() => this.onShowModal()}>进出场动画</Button>
+        <Button onClick={() => this.onStart()}>Progress</Button>
         <Progress
           strokeColor={{
             '0%': '#108ee9',
@@ -185,7 +195,7 @@ this.setState({visible:!this.state.visible})
           percent={current}
         />
         <HtmlToPdf></HtmlToPdf>
-        <Button onClick={()=>this.setState(this.showModal)}>Modal</Button>
+        <Button onClick={() => this.setState(this.showModal)}>Modal</Button>
         {/* <Picker
           data={[{value: '1', label: '5'}, {value: '2', label: '51'}, {value: '3', label: '52'}]}
           key={'ttt'}
@@ -199,12 +209,12 @@ this.setState({visible:!this.state.visible})
           <List.Item arrow="horizontal">Single</List.Item>
         </Picker>
          */}
-        {/* <Modal title="Basic Modal" visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal> */}
-      {/* <img src={toolsPng} alt="" /> */}
+        <Modal title="Basic Modal" visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
+        {/* <img src={toolsPng} alt="" /> */}
       </>
     );
   }

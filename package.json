@@ -18,6 +18,7 @@
 		"babel-plugin-import": "^1.13.3",
 		"cache-loader": "^4.1.0",
 		"chalk": "^4.1.0",
+		"classnames": "^2.3.1",
 		"copy-webpack-plugin": "^5.1.2",
 		"core-js": "^3.8.3",
 		"cssnano": "^4.1.11",
@@ -51,6 +52,7 @@
 		"sha1": "^1.1.1",
 		"single-line-log": "^1.1.2",
 		"uglifyjs-webpack-plugin": "^2.2.0",
+		"weui-react-v2": "^3.3.0",
 		"zarm": "^2.9.1"
 	},
 	"devDependencies": {
@@ -68,7 +70,6 @@
 		"clean-webpack-plugin": "^3.0.0",
 		"cross-env": "^7.0.3",
 		"css-loader": "^5.0.1",
-		"cssnano": "^4.1.10",
 		"file-loader": "^6.2.0",
 		"html-webpack-plugin": "^4.5.0",
 		"koa-static-server": "^1.5.2",
