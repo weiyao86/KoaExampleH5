@@ -21,74 +21,59 @@ class Class extends React.Component {
     }
 
     show = () => {
-
-        this.setState({ visible: true, aniActive: true })
-    }
-
-    close = () => {
-       
-        this.setState({ visible: false,aniActive: false });
-    }
-
-    destory = () => {
-        // this.watchVisible(false);
-        this.setState({ aniActive: true }, () => {
-            console.log('close')
-
-            this.props.okPress();
-            this.props.cancelPress();
+        this.setState({ visible: true }, () => {
+            this.watchVisible();
         });
     }
 
-    // watchVisible = (visible) => {
-    //     if (this.aniRef) {
-    //         this.tempVisible=visible;
-    //         if (visible) {
-                
-    //             this.aniRef.addEventListener("transitionend", this.onAnimationEnd);
-    //             this.aniRef.addEventListener("animationend", this.onAnimationEnd);
+    close = () => {
+        this.setState({ visible: false, aniActive: false });
+    }
 
-    //         } else {
-    //             debugger;
-    //             this.aniRef.removeEventListener("transitionend", this.onAnimationEnd);
-    //             this.aniRef.removeEventListener("animationend", this.onAnimationEnd);
-    //         }
-    //     }
-    // }
+    destory = () => {
+        this.props.okPress();
+        this.props.cancelPress();
+    }
+
+    watchVisible = (visible) => {
+        if (this.aniRef) {
+            this.aniRef.removeEventListener("transitionend", this.onAnimationEnd.bind(this));
+            this.aniRef.removeEventListener("animationend", this.onAnimationEnd.bind(this));
+            this.aniRef.addEventListener("transitionend", this.onAnimationEnd.bind(this));
+            this.aniRef.addEventListener("animationend", this.onAnimationEnd.bind(this));
+        }
+    }
 
     onAnimationEnd = () => {
         const { visible } = this.state;
-        console.log('aniActive')
-        if (!visible) {
-            this.destory();
-        }
+
+        this.setState({ aniActive: true }, () => {
+            if (!visible) {
+                this.destory();
+            }
+        });
     }
 
     componentDidMount() {
         const { visible } = this.state;
-        console.log('componentDidMount');
-        if (visible) {
-            this.setState({ aniActive: true });
-        }
     }
 
     componentWillUnmount() {
         console.log('componentWillUnmount');
     }
 
-
     componentDidUpdate(prevProps, prevState) {
         if (!prevProps.visible && this.props.visible) {
             this.show();
         }
         else if (prevProps.visible && !this.props.visible && this.state.visible) {
-            console.log('exit', this.state.visible);
             this.close();
         }
     }
 
     render() {
         const { visible, aniActive } = this.state;
+        const { title, content, okText, cancelText } = this.props;
 
         const mastAniCls = visible ? 'fade-in' : 'fade-out';
         const dialogAniCls = visible ? 'zoom-in' : 'zoom-out';
@@ -96,16 +81,18 @@ class Class extends React.Component {
         if (!visible && aniActive) {
             return null;
         }
-        console.log(visible)
-        return ReactDom.createPortal(<div className={cn(`${prefixCls}`)} ref={(e) => (this.modalRef = e)}>
-            <div className={cn(`${prefixCls}-mask`, mastAniCls)}></div>
-            <div className={cn(`${prefixCls}-dialog`, dialogAniCls)} ref={(e) => (this.aniRef = e)} onAnimationEnd={this.onAnimationEnd}>
+        return ReactDom.createPortal(<div id="test-way" className={cn(`${prefixCls}`)} ref={(e) => (this.modalRef = e)}>
+            <div className={cn(`${prefixCls}-mask`, mastAniCls)} onClick={this.close}></div>
+            <div className={cn(`${prefixCls}-dialog`, dialogAniCls)} ref={(e) => (this.aniRef = e)}>
                 <p className={cn(`${prefixCls}-dialog-title`)}>
-                    MODAL
+                    {title}
                 </p>
                 <div className={cn(`${prefixCls}-dialog-content`)}>
-                    CONTENT
-                    <button onClick={this.close}>Close</button>
+                    {this.props.children ? this.props.children : content}
+                </div>
+                <div className={cn(`${prefixCls}-dialog-footer`)}>
+                    <button className={cn(`${prefixCls}-dialog-button-primary`)} onClick={this.close}>{okText}</button>
+                    <button className={cn(`${prefixCls}-dialog-button-primary`)} onClick={this.close}>{cancelText}</button>
                 </div>
             </div>
         </div>, document.body);

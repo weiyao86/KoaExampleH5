@@ -73,9 +73,6 @@ class Class extends React.Component {
 
   onOpenModal = () => {
     this.setState({ visible: true });
-    // setTimeout(()=>{
-    //   this.setState({ visible: false })
-    // },3000);
   }
 
   render() {
@@ -105,11 +102,13 @@ class Class extends React.Component {
           下载流
         </a>
         <Divider plain>下载流</Divider>
-        <Divider plain>自定义Modal</Divider>
         <Button type='primary' onClick={() => this.onOpenModal()}>
           弹出Modal
         </Button>
-        <Modal {...cfg}></Modal>
+        <Divider plain>自定义Modal</Divider>
+        <Modal {...cfg}>
+        lalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalalla
+        </Modal>
       </div>
     );
   }

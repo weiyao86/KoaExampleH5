@@ -2,7 +2,7 @@ import { Link, Route } from 'dva/router';
 import TweenOne from 'rc-tween-one';
 import QueueAnim from 'rc-queue-anim';
 import { Button, Modal, Progress } from 'antd';
-import { DialogPop } from 'weui-react-v2';
+import {  DialogPop } from 'weui-react-v2';
 import React from 'react';
 import HtmlToPdf from '@Client/components/html-to-pdf';
 // import { Picker, List, WhiteSpace } from 'antd-mobile';
@@ -140,7 +140,7 @@ class Class extends React.Component {
   }
 
   componentDidMount() {
-  }
+ }
 
   showModal = () => {
     // this.setIsModalVisible(true);
@@ -210,10 +210,10 @@ class Class extends React.Component {
         </Picker>
          */}
         <Modal title="Basic Modal" visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
         {/* <img src={toolsPng} alt="" /> */}
       </>
     );
