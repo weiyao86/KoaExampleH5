@@ -1,112 +1,27 @@
-@prefix: wey;
-
-@modal-prefix-cls: ~'@{prefix}-modal';
-
-.@{modal-prefix-cls} {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 3000;
-  transform: translateZ(0.1px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  &-mask {
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    overflow: hidden;
-  }
-  &-dialog {
-    min-width: 500px;
-    min-height: 300px;
-    background-color: #fff;
-    z-index: 1000;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    &-title {
-      line-height: 40px;
-    }
-    &-content {
-      text-align: center;
-      flex:1;
-    }
-    &-footer{
-        min-height: 40px;
-        border-top: 1px solid #eee;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    }
-    &-button-primary{
-        background: #1890ff;
-        border-color: #1890ff;
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 4px;
-        color: #fff;
-        margin:0 10px;
-        padding: 4px 15px;
-        &:hover{
-            cursor: pointer;
-        }
-    }
-  }
-
-  .zoom-in {
-    animation: zoomIn 0.2s ease-in forwards;
-  }
-
-  .zoom-out {
-    animation: zoomOut 0.2s ease-in forwards;
-  }
-
-  .fade-in {
-    animation: fadeIn 0.2s ease-in forwards;
-  }
-  .fade-out {
-    animation: fadeOut 0.2s ease-in forwards;
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  @keyframes zoomIn {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  @keyframes zoomOut {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0);
-    }
+.custom-page {
+  .legend-wrap {
+      position: relative;
+      min-height: 300px;
+      box-shadow: 0 0 20px rgba(0,0,0,.65);
+      .legend{
+          position: absolute;
+          top:0;
+          left:0;
+          right:0;
+          bottom:0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        //   transition: transfrom .3s ease;
+          width:200px;
+          height:200px;
+          margin:auto;
+          border:1px solid #f00;
+          img{
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+          }
+      }
   }
 }

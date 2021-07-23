@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import cn from 'classnames';
-import './style.less';
+import './modal.less';
 const prefixCls = 'wey-modal';
 class Class extends React.Component {
     constructor(props) {

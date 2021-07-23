@@ -1,11 +1,12 @@
 import React from 'react';
 import { message, Button, Avatar, Divider } from 'antd';
 import Modal from './modal';
-
+import './style.less';
 class Class extends React.Component {
   state = {
     imgUrl: '',
-    visible: false
+    visible: false,
+    touchs: 0
   };
 
   downLoad = () => {
@@ -75,8 +76,71 @@ class Class extends React.Component {
     this.setState({ visible: true });
   }
 
+  getTouches = (e) => {
+    const { changedTouches, targetTouches, touches } = e;
+    const len = targetTouches.length + '--' + changedTouches.length + '--' + touches.length;
+    this.setState({ touchs: len })
+  }
+
+  touchStart = (e) => {
+    console.log('touchStart', e);
+    // this.getTouches(e);
+    this.orignWidth = this.scaleImgRef.clientWidth;
+    this.orignHeight = this.scaleImgRef.clientHeight;
+    const { changedTouches, targetTouches, touches, target } = e;
+    if (targetTouches.length != 2) return;
+
+    this.first = targetTouches[0];
+    this.second = targetTouches[1];
+    this.startX = target.offsetLeft;
+    this.startY = target.offsetTop;
+    console.log(this.startX, this.startY)
+    this.scaleImgRef.addEventListener('touchmove', this.touchMove.bind(this));
+    this.scaleImgRef.addEventListener('touchend', this.touchEnd.bind(this));
+  }
+  touchMove = (e) => {
+    // console.log('touchMove', e);
+    e.stopPropagation();
+    e.preventDefault();
+    // this.getTouches(e);
+    const { changedTouches, targetTouches, touches, target } = e;
+    if (targetTouches.length != 2) return;
+    const newFirst = targetTouches[0];
+    const newSecond = targetTouches[1];
+
+    let startRadius = Math.sqrt(Math.pow(this.second.pageX - this.first.pageX, 2) + Math.pow(this.second.pageY - this.first.pageY, 2));
+    let radius = Math.sqrt(Math.pow(newSecond.pageX - newFirst.pageX, 2) + Math.pow(newSecond.pageY - newFirst.pageY, 2));
+    this.scale = Math.sqrt(radius / startRadius) * 1;
+    this.setState({ touchs: this.scale })
+
+    this.scaleImgRef.style.transform = `scale(${this.scale})`;
+    console.log('move', this.scaleImgRef.clientWidth)
+
+  }
+  touchEnd = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    // console.log('touchEnd', e);
+    // this.getTouches(e);
+    console.log('end', this.scaleImgRef.clientWidth)
+    this.scaleImgRef.style.width=this.scale*this.orignWidth+'px';
+    this.scaleImgRef.style.height=this.scale*this.orignHeight+'px';
+    console.log('end',this.scaleImgRef.clientWidth)
+    this.scaleImgRef.removeEventListener('touchmove', this.touchMove.bind(this));
+    this.scaleImgRef.removeEventListener('touchend', this.touchEnd.bind(this));
+  }
+
+  componentDidMount() {
+    if (this.scaleImgRef) {
+      this.scaleImgRef.addEventListener('touchstart', this.touchStart.bind(this));
+
+      // alert(this.orignWidth+'//'+this.orignHeight)
+    }
+  }
+
+
   render() {
-    const { imgUrl, visible } = this.state;
+    const { imgUrl, visible, touchs } = this.state;
     const cfg = {
       visible,
       content: '自定义modal',
@@ -87,7 +151,7 @@ class Class extends React.Component {
       cancelPress: () => { this.setState({ visible: false }) },
     }
     return (
-      <div>
+      <div className="custom-page">
         <label style={{ background: '#000', color: '#fff', padding: 20, margin: 20 }}>
           看我上传文件后再下载
           <input type='file' onChange={(e) => this.upload(e)} style={{ display: 'none' }} />
@@ -106,8 +170,18 @@ class Class extends React.Component {
           弹出Modal
         </Button>
         <Divider plain>自定义Modal</Divider>
+
+        <Divider plain>图片放大缩小</Divider>
+        <div>
+          <p>图片放大缩小****{touchs}</p>
+          <div className="legend-wrap">
+            <div className="legend" ref={(e) => this.scaleImgRef = e} style={{ background: `url(${imgUrl})no-repeat center/contain transparent` }}>
+              {/* <img src={imgUrl} /> */}
+            </div>
+          </div>
+        </div>
         <Modal {...cfg}>
-        lalalallalalalallalalalallalalalallalalalallalalalallalalalallalalalalla
+          这是自定义children
         </Modal>
       </div>
     );
