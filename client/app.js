@@ -45,7 +45,16 @@ app.router((props) => (
 
 const App = app.start();
 
-ReactDom.render(<App />, document.getElementById('app'));
+let renderMethod;
+//入口需配置需热更新文件
+if (module.hot) {
+  module.hot.accept();
+  renderMethod = ReactDom.render;
+} else {
+  renderMethod = ReactDom.hydrate;
+}
+
+renderMethod(<App />, document.getElementById('app'));
 
 //配置热更新模块，无刷新[需配置devServer]
 // if (module.hot) {
