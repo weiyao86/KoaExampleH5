@@ -6,8 +6,16 @@ class Class extends React.Component {
   state = {
     imgUrl: '',
     visible: false,
-    touchs: 0
+    touchs: 0,
   };
+
+  constructor(props) {
+    super(props);
+    this.scale = 1;
+    this.startScale = 1;
+    this.moveX = 0;
+    this.moveY = 0;
+  }
 
   downLoad = () => {
     let xhr = new XMLHttpRequest();
@@ -17,9 +25,9 @@ class Class extends React.Component {
       if (readyState == XMLHttpRequest.DONE && (status === 0 || (status >= 200 && status < 400))) {
         let rst = req.target.response;
         //m1
-        // this.downByFileReader(rst);
+        this.downByFileReader(rst);
         //m2
-        this.downByBlobUrl(rst);
+        // this.downByBlobUrl(rst);
       }
     };
     xhr.responseType = 'blob';
@@ -35,6 +43,7 @@ class Class extends React.Component {
       let aLink = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
       let isSupport = 'download' in aLink;
       alert('support the download attribute?------' + isSupport);
+     
       aLink.href = base64;
       aLink.download = '16203790356058tj2ar.jpeg';
       aLink.click();
@@ -60,74 +69,110 @@ class Class extends React.Component {
   //上传
   upload = ({ target }) => {
     let file = target.files[0];
-    let fs = new FileReader();
-    fs.onload = ({ target }) => {
-      let base64 = target.result;
-      this.setState({ imgUrl: base64 });
-      let a = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
-      a.href = base64;
-      a.download = file.name;
-      a.click();
-    };
-    fs.readAsDataURL(file);
+    this.downByFileReader(file);
   };
 
   onOpenModal = () => {
     this.setState({ visible: true });
   }
 
+  getDistance = (touches) => {
+    if (touches.length != 2) return 0;
+    const [first, second] = touches;
+    return Math.sqrt(Math.pow(second.pageX - first.pageX, 2) + Math.pow(second.pageY - first.pageY, 2));
+  }
+
+  setScale = ({ scale, top = 0, left = 0 }) => {
+    this.scaleImgRef.style.transform = `scale(${scale}) translate(${left}px,${top}px)`;
+  }
   getTouches = (e) => {
     const { changedTouches, targetTouches, touches } = e;
     const len = targetTouches.length + '--' + changedTouches.length + '--' + touches.length;
     this.setState({ touchs: len })
   }
 
-  touchStart = (e) => {
-    console.log('touchStart', e);
-    // this.getTouches(e);
-    this.orignWidth = this.scaleImgRef.clientWidth;
-    this.orignHeight = this.scaleImgRef.clientHeight;
-    const { changedTouches, targetTouches, touches, target } = e;
-    if (targetTouches.length != 2) return;
+  resetTouchStatus = () => {
+    this.deltaX = 0;
+    this.deltaY = 0;
+    this.offsetX = 0;
+    this.offsetY = 0;
+  }
 
-    this.first = targetTouches[0];
-    this.second = targetTouches[1];
-    this.startX = target.offsetLeft;
-    this.startY = target.offsetTop;
-    console.log(this.startX, this.startY)
+  touchStart = (e) => {
+
+    const { changedTouches, targetTouches, touches, target } = e;
+
+    let offsetX = this.offsetX === void 0 ? 0 : this.offsetX;
+    //记录初始坐标
+    this.resetTouchStatus();
+    this.moving = targetTouches.length == 1 && this.scale != 1;
+    //是否两指非移动
+    this.zooming = targetTouches.length == 2 && !offsetX;
+
+    //起点坐标
+    this.startX = targetTouches[0].pageX;
+    this.startY = targetTouches[0].pageY;
+    this.startMoveX = this.moveX;
+    this.startMoveY = this.moveY;
+    //缩放操作
+    if (this.zooming) {
+      //初始半径
+      this.startRadius = this.getDistance(targetTouches);
+      this.startScale = this.scale;
+      console.log(this.startX, this.startY, this.startRadius)
+    }
     this.scaleImgRef.addEventListener('touchmove', this.touchMove.bind(this));
     this.scaleImgRef.addEventListener('touchend', this.touchEnd.bind(this));
   }
   touchMove = (e) => {
-    // console.log('touchMove', e);
-    e.stopPropagation();
-    e.preventDefault();
-    // this.getTouches(e);
+    if (this.zooming || this.moving) {
+      e.preventDefault();
+    }
+    let offsetX = this.offsetX;
     const { changedTouches, targetTouches, touches, target } = e;
-    if (targetTouches.length != 2) return;
-    const newFirst = targetTouches[0];
-    const newSecond = targetTouches[1];
 
-    let startRadius = Math.sqrt(Math.pow(this.second.pageX - this.first.pageX, 2) + Math.pow(this.second.pageY - this.first.pageY, 2));
-    let radius = Math.sqrt(Math.pow(newSecond.pageX - newFirst.pageX, 2) + Math.pow(newSecond.pageY - newFirst.pageY, 2));
-    this.scale = Math.sqrt(radius / startRadius) * 1;
-    this.setState({ touchs: this.scale })
+    //记录坐标点
+    this.deltaX = targetTouches[0].pageX - this.startX;
+    this.deltaY = targetTouches[0].pageY - this.startY;
+    this.offsetX = Math.abs(this.deltaX);
+    this.offsetY = Math.abs(this.deltaY);
 
-    this.scaleImgRef.style.transform = `scale(${this.scale})`;
-    console.log('move', this.scaleImgRef.clientWidth)
+    if (this.moving) {
+      this.moveX = this.deltaX + this.startMoveX;
+      this.moveY = this.deltaY + this.startMoveY;
+    }
+
+    if (targetTouches.length == 2 && this.zooming) {
+
+      let radius = this.getDistance(targetTouches);
+      this.scale = this.startScale * radius / this.startRadius;
+      this.setState({ touchs: this.scale < 1 ? 1 : this.scale })
+    }
+    let scale = this.scale < 1 ? 1 : this.scale;
+    this.setScale({
+      scale,
+      top: this.moveY / scale,
+      left: this.moveX / scale,
+    });
 
   }
   touchEnd = (e) => {
+    const { changedTouches, targetTouches, touches, target } = e;
+    if (!targetTouches.length) {
+      this.startMoveX = this.startMoveY = 0;
+      this.startScale = 1;
+    }
     e.stopPropagation();
-    e.preventDefault();
-    // console.log('touchEnd', e);
-    // this.getTouches(e);
-    console.log('end', this.scaleImgRef.clientWidth)
-    this.scaleImgRef.style.width=this.scale*this.orignWidth+'px';
-    this.scaleImgRef.style.height=this.scale*this.orignHeight+'px';
-    console.log('end',this.scaleImgRef.clientWidth)
+    if (this.zooming) {
+      this.zooming = false;
+    }
+    if (this.moving) {
+      this.moving = false;
+    }
+
     this.scaleImgRef.removeEventListener('touchmove', this.touchMove.bind(this));
     this.scaleImgRef.removeEventListener('touchend', this.touchEnd.bind(this));
+    this.resetTouchStatus();
   }
 
   componentDidMount() {
@@ -155,6 +200,7 @@ class Class extends React.Component {
         <label style={{ background: '#000', color: '#fff', padding: 20, margin: 20 }}>
           看我上传文件后再下载
           <input type='file' onChange={(e) => this.upload(e)} style={{ display: 'none' }} />
+          
         </label>
         <Avatar src={imgUrl} size={{ xs: 124, sm: 132, md: 140, lg: 164, xl: 180, xxl: 200 }} />
         <Divider plain>Text</Divider>
