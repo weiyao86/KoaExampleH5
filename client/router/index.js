@@ -1,6 +1,7 @@
 import LazyMoudle from './lazyMoudle';
 
 const routerConfig = [
+  // TODO:PC
   {
     path: '/',
     component: LazyMoudle(() => ({
@@ -34,4 +35,20 @@ const routerConfig = [
   },
 ];
 
+const mobileRouterConfig=[
+   //TODO:mobile
+   {
+    path: '/',
+    component: LazyMoudle(() => ({
+      entry: import(/* webpackChunkName: "mHome" */ '@Client/views/zarm/home'),
+      models: [import(/* webpackChunkName: "mHomeModel" */ '@Client/views/zarm/home/model')],
+    })),
+    breadcrumbName: '首页',
+    title: '首页',
+    exact: true,
+  },
+];
+
 export default routerConfig;
+
+export {mobileRouterConfig};

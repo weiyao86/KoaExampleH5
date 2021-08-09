@@ -64,7 +64,8 @@ module.exports = {
   // entry: () => ({ main: ['./index.js'], demo: ['./test.js'] }),
   entry: {
     // main: ['react-hot-loader/patch', './index.js']   //使用koa-webpack后带有热更新配置，此处禁用
-    main: ['./client/app.js'],
+    // main: ['./client/app.js'],  //PC端
+    main: ['./client/views/zarm/m-app.js'],  //zarm mobile端
   },
   output: {
     filename: IS_PROD ? '[name].[contenthash].js' : '[name].[hash:10].js', //'[name].[contenthash].js',
@@ -98,7 +99,7 @@ module.exports = {
       },
       {
         test: /\.(scss|sass)$/,
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         use: getStyleLoaders('css-loader', 'sass-loader'),
       },
       {
@@ -118,30 +119,30 @@ module.exports = {
               limit: 8192, // 大概8k以下的图片打包成base64
             },
           },
-          {
-            //压缩图片
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.9],
-                speed: 4,
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              //todo:ios 好像有兼容问题？？禁用先 the webp option will enable WEBP
-              // webp: {
-              //   quality: 75
-              // }
-            },
-          },
+          // {
+          //   //TODO:压缩图片  这玩意只能cnpm可以下载先不处理
+          //   loader: 'image-webpack-loader',
+          //   options: {
+          //     mozjpeg: {
+          //       progressive: true,
+          //     },
+          //     // optipng.enabled: false will disable optipng
+          //     optipng: {
+          //       enabled: false,
+          //     },
+          //     pngquant: {
+          //       quality: [0.65, 0.9],
+          //       speed: 4,
+          //     },
+          //     gifsicle: {
+          //       interlaced: false,
+          //     },
+          //     //todo:ios 好像有兼容问题？？禁用先 the webp option will enable WEBP
+          //     // webp: {
+          //     //   quality: 75
+          //     // }
+          //   },
+          // },
         ],
       },
       {

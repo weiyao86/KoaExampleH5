@@ -72,6 +72,7 @@ class Class extends React.Component {
     this.downByFileReader(file);
   };
 
+  
   onOpenModal = () => {
     this.setState({ visible: true });
   }
