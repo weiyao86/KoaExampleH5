@@ -9,7 +9,6 @@ import './style.less';
 //自定义指令
 const withTest = props => WrapCmp => {
   console.log('p', this)
-  debugger;
   // return <WrapCmp {...props}></WrapCmp>;
   return class extends React.Component {
     render() {

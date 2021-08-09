@@ -11803,10 +11803,10 @@ ylru@^1.2.0:
   resolved "https://registry.nlark.com/ylru/download/ylru-1.2.1.tgz#f576b63341547989c1de7ba288760923b27fe84f"
   integrity sha1-9Xa2M0FUeYnB3nuiiHYJI7J/6E8=
 
-zarm@^2.9.1:
-  version "2.9.4"
-  resolved "https://registry.nlark.com/zarm/download/zarm-2.9.4.tgz#3c895cb3f86d83b1ba69fcd43408b16b036e1a44"
-  integrity sha1-PIlcs/htg7G6afzUNAixawNuGkQ=
+zarm@^2.9.6:
+  version "2.9.6"
+  resolved "https://registry.nlark.com/zarm/download/zarm-2.9.6.tgz#acc3e5f03f3c9473c92b80c95598d996f0baa4f6"
+  integrity sha1-rMPl8D88lHPJK4DJVZjZlvC6pPY=
   dependencies:
     "@babel/runtime" "^7.14.0"
     "@zarm-design/icons" "^0.1.1"

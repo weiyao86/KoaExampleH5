@@ -209,11 +209,11 @@ class Class extends React.Component {
           <List.Item arrow="horizontal">Single</List.Item>
         </Picker>
          */}
-        <Modal title="Basic Modal" visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
+        {/* <Modal title="Basic Modal" visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
-      </Modal>
+      </Modal> */}
         {/* <img src={toolsPng} alt="" /> */}
       </>
     );
