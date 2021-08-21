@@ -35,9 +35,9 @@ const routerConfig = [
   },
 ];
 
-const mobileRouterConfig=[
-   //TODO:mobile
-   {
+const mobileRouterConfig = [
+  //TODO:mobile
+  {
     path: '/',
     component: LazyMoudle(() => ({
       entry: import(/* webpackChunkName: "mHome" */ '@Client/views/zarm/home'),
@@ -46,9 +46,33 @@ const mobileRouterConfig=[
     breadcrumbName: '首页',
     title: '首页',
     exact: true,
+    hasButtonMenu: true,
+    routes: [
+      {
+        path: '/work',
+        component: LazyMoudle(() => ({
+          entry: import(/* webpackChunkName: "mHomeWork" */ '@Client/views/zarm/home/work'),
+          models: [import(/* webpackChunkName: "mHomeWorkModel" */ '@Client/views/zarm/home/work/model')],
+        })),
+        breadcrumbName: '工作台',
+        title: '工作台',
+        exact: true,
+        hasButtonMenu: true,
+      },
+    ],
+  },
+  {
+    path: '/me',
+    component: LazyMoudle(() => ({
+      entry: import(/* webpackChunkName: "mMe" */ '@Client/views/zarm/me'),
+      models: [import(/* webpackChunkName: "mMeModel" */ '@Client/views/zarm/me/model')],
+    })),
+    breadcrumbName: '工作台',
+    title: '工作台',
+    exact: true,
   },
 ];
 
 export default routerConfig;
 
-export {mobileRouterConfig};
+export { mobileRouterConfig };

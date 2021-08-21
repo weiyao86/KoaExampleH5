@@ -9,19 +9,23 @@ const common = require('./webpack.config.base.js');
 // const DashboardPlugin = require('webpack-dashboard/plugin');
 // const dashboard = new Dashboard();
 
-module.exports = merge(common, {
+common.entry.main.unshift('react-hot-loader/patch');
+
+const WebPackCfg = merge(common, {
   mode: 'development', //"development" | "production" | "none"
   devtool: 'inline-source-map', //开发环境定位
-  plugins: [new CleanWebpackPlugin(),
-  //使用koa-webpack后带有热更新配置，此处禁用
-  //  new webpack.HotModuleReplacementPlugin(), 
-  new ProgressBarPlugin({
-    format: '编译进度：[:bar] :percent (耗时：:elapsed 秒)',
-    clear: false,
-    width: 60,
-    stream: process.stdout ? process.stdout : undefined,
-  }),
+  plugins: [
+    new CleanWebpackPlugin(),
+    //使用koa-webpack后带有热更新配置，此处禁用
+    // new webpack.HotModuleReplacementPlugin(),
+    new ProgressBarPlugin({
+      format: '编译进度：[:bar] :percent (耗时：:elapsed 秒)',
+      clear: false,
+      width: 60,
+      stream: process.stdout ? process.stdout : undefined,
+    }),
     // new DashboardPlugin()
-  ]
-
+  ],
 });
+
+module.exports = WebPackCfg;

@@ -12,20 +12,19 @@ const registerModel = (model) => {
 };
 
 export default function asyncComponent(cmp) {
-  
   class AsyncCmp extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
         component: null,
         model: null,
+        error: '',
       };
     }
 
     componentDidMount() {
       const { globalModel } = this.props;
       const cmpMethod = cmp();
-
 
       // 返回异步组件及model
       const { entry = null, models = [] } = cmpMethod;
@@ -47,11 +46,15 @@ export default function asyncComponent(cmp) {
         })
         .catch((err) => {
           console.log('catch', err);
+          this.setState({ error: '加载错误!请重新刷新页面' });
         });
     }
 
     render() {
-      const C = this.state.component;
+      const { error, component: C } = this.state;
+      if (error) {
+        return error;
+      }
       return C ? <C {...this.props} /> : <div>Loading...</div>;
     }
   }
