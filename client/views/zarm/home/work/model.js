@@ -1,9 +1,7 @@
 const model = {
-  namespace: 'home',
+  namespace: 'work',
   state: {
     isLoad: false,
-    id: 'homeId',
-    data: [],
   },
   reducers: {
     set(state, { payload }) {

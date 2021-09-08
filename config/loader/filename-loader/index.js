@@ -9,11 +9,11 @@ module.exports=function(source){
 
   let options = {};
   // 兼容新/老版的 loader-utils
-  if (loaderUtils.getOptions) {
-    options = loaderUtils.getOptions(this) || {};
-  } else {
-    options = loaderUtils.parseQuery(this.query) || {};
-  }
+  // if (loaderUtils.getOptions) {
+  //   options = loaderUtils.getOptions(this) || {};
+  // } else {
+  //   options = loaderUtils.parseQuery(this.query) || {};
+  // }
 
   if (options.regEx === undefined) {
     options.regEx = '^[a-z][a-z0-9]*(-([a-z0-9])+)*$';
