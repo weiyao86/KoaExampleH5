@@ -210,7 +210,7 @@ class Class extends React.Component {
         </Button>
         <Divider plain>my-Blob</Divider>
         <a href='/downloadFile' target='_blank'>
-          下载流
+        ******下载流******
         </a>
         <Divider plain>下载流</Divider>
         <Button type='primary' onClick={() => this.onOpenModal()}>

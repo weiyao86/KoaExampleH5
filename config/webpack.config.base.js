@@ -64,8 +64,8 @@ module.exports = {
   // entry: () => ({ main: ['./index.js'], demo: ['./test.js'] }),
   entry: {
     // main: ['react-hot-loader/patch', './index.js']   //使用koa-webpack后带有热更新配置，此处禁用
-    // main: ['./client/app.js'],  //PC端
-    main: ['./client/views/zarm/m-app.js'],  //zarm mobile端
+    main: ['./client/app.js'],  //PC端
+    // main: ['./client/views/zarm/m-app.js'],  //zarm mobile端
   },
   output: {
     filename: IS_PROD ? '[name].[contenthash].js' : '[name].[hash:10].js', //'[name].[contenthash].js',

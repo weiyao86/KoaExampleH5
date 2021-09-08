@@ -148,33 +148,32 @@ koaWebpack({
     try {
       await next();
     } catch (error) {
-      debugger;
       ctx.body = error;
       // ctx.app.emit('error');
     }
   });
 
   //post 请求参数解析，文件上传
-  // app.use(
-  //   koaBody({
-  //     jsonLimit: '11mb', // JSON主体字节 1mb //application/json
-  //     formLimit: '56kb', // 表单主体字节 56kb //application/x-www-urlencoded
-  //     textLimit: '56kb', // 文本主体字节 56kb
-  //     onError: (err, ctx) => {
-  //       //eslint-disable-line
-  //       console.log(err);
-  //       throw err;
-  //     },
-  //     multipart: true, //
-  //     formidable: {
-  //       // multipart/form-data
-  //       maxFields: 1000, // query 字符数 (0表示无限制)
-  //       maxFieldsSize: 2 * 1024 * 1024, // 默认单位内存量 2MB
-  //       maxFileSize: 20 * 1024 * 1024, // 限制上传文件的大小 20MB
-  //       keepExtensions: true,
-  //     },
-  //   })
-  // );
+  app.use(
+    koaBody({
+      jsonLimit: '11mb', // JSON主体字节 1mb //application/json
+      formLimit: '56kb', // 表单主体字节 56kb //application/x-www-urlencoded
+      textLimit: '56kb', // 文本主体字节 56kb
+      onError: (err, ctx) => {
+        //eslint-disable-line
+        console.log(err);
+        throw err;
+      },
+      multipart: true, //
+      formidable: {
+        // multipart/form-data
+        maxFields: 1000, // query 字符数 (0表示无限制)
+        maxFieldsSize: 2 * 1024 * 1024, // 默认单位内存量 2MB
+        maxFileSize: 20 * 1024 * 1024, // 限制上传文件的大小 20MB
+        keepExtensions: true,
+      },
+    })
+  );
 
   //统一设置中间件
   const { ignoreAssets, setTime, getTime, respond } = middlewareFile;
