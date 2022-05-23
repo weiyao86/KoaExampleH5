@@ -1,7 +1,10 @@
 import React from 'react';
 import { message, Button, Avatar, Divider } from 'antd';
+import CustomTabs, { CustomTabPane } from './components/tabs';
 import Modal from './modal';
 import './style.less';
+
+
 class Class extends React.Component {
   state = {
     imgUrl: '',
@@ -43,7 +46,7 @@ class Class extends React.Component {
       let aLink = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
       let isSupport = 'download' in aLink;
       alert('support the download attribute?------' + isSupport);
-     
+
       aLink.href = base64;
       aLink.download = '16203790356058tj2ar.jpeg';
       aLink.click();
@@ -72,7 +75,7 @@ class Class extends React.Component {
     this.downByFileReader(file);
   };
 
-  
+
   onOpenModal = () => {
     this.setState({ visible: true });
   }
@@ -198,10 +201,22 @@ class Class extends React.Component {
     }
     return (
       <div className="custom-page">
+        <CustomTabs>
+          <CustomTabPane
+            tab={<div>title1</div>}
+          >aaaaaaaaaaaaaaaaa
+          </CustomTabPane>
+          <CustomTabPane
+            tab={<div>title2</div>}
+          >tttttt
+          </CustomTabPane>
+
+        </CustomTabs >
+
         <label style={{ background: '#000', color: '#fff', padding: 20, margin: 20 }}>
           看我上传文件后再下载
           <input type='file' onChange={(e) => this.upload(e)} style={{ display: 'none' }} />
-          
+
         </label>
         <Avatar src={imgUrl} size={{ xs: 124, sm: 132, md: 140, lg: 164, xl: 180, xxl: 200 }} />
         <Divider plain>Text</Divider>
@@ -210,7 +225,7 @@ class Class extends React.Component {
         </Button>
         <Divider plain>my-Blob</Divider>
         <a href='/downloadFile' target='_blank'>
-        ******下载流******
+          ******下载流******
         </a>
         <Divider plain>下载流</Divider>
         <Button type='primary' onClick={() => this.onOpenModal()}>
@@ -223,14 +238,14 @@ class Class extends React.Component {
           <p>图片放大缩小****{touchs}</p>
           <div className="legend-wrap">
             <div className="legend" ref={(e) => this.scaleImgRef = e} style={{ background: `url(${imgUrl})no-repeat center/contain transparent` }}>
-              {/* <img src={imgUrl} /> */}
+              <img src={imgUrl} />
             </div>
           </div>
         </div>
         <Modal {...cfg}>
           这是自定义children
         </Modal>
-      </div>
+      </div >
     );
   }
 }

@@ -11,6 +11,7 @@ const views = require('koa-views');
 const favicon = require('koa-favicon');
 const koaWebpack = require('koa-webpack');
 const middlewareFile = require('./app/middleware');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const path = require('path');
 const webpackCng = require('./config/webpack.config.dev.js');
 const webpack = require('webpack');
@@ -41,13 +42,11 @@ app.use(session(CONFIG, app));
 app.use(favicon(__dirname + '/favicon.ico'));
 
 // 将 webpack.config.base.js 配置文件作为基础配置
-// koa-webpack-dev-middleware 是一个封装器(wrapper)，它可以把 webpack 处理过的文件发送到一个 server,保存在内存中，开发环境使用
-webpackCng.entry.main.unshift(`webpack-hot-client/client?whc_${new Date().getTime()}`);
-// webpackCng.entry.main.unshift('react-hot-loader/patch');
 
 webpackCng.plugins = webpackCng.plugins.concat([
-  new webpack.HotModuleReplacementPlugin(),
+  new ReactRefreshWebpackPlugin(),
 ]);
+
 
 const compiler = webpack(webpackCng);
 
@@ -133,7 +132,7 @@ koaWebpack({
   //热更新
   hotClient: {
     allEntries: false,
-    autoConfigure: false,
+    autoConfigure: true,
     logTime: true,
     logLevel: 'error',
     // host: '127.0.0.1',

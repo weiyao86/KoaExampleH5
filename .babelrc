@@ -12,7 +12,6 @@
     ]
   ],
   "plugins": [
-    "react-hot-loader/babel",
     [
       "import", { "libraryName": "antd-mobile", "style": true}, "ant1"
     ],
@@ -34,5 +33,43 @@
     ],
     "@babel/plugin-proposal-class-properties"
     
-  ]
+  ],
+  "env":{
+    "development":{
+      "presets": [
+        "@babel/preset-react",
+        [
+          "@babel/preset-env",
+          {
+            "modules": false,
+            "useBuiltIns": "usage",
+            "debug": false,
+            "corejs": 3
+          }
+        ]
+      ],
+      "plugins": [
+        "react-refresh/babel",
+        [
+          "import", { "libraryName": "antd-mobile", "style": true}, "ant1"
+        ],
+        [
+          "import", { "libraryName": "antd","libraryDirectory": "lib",  "style": true}, "ant"
+        ],
+        ["import", {
+          "libraryName": "zarm",
+          "style": true // or 'css'
+        },"zarm"],
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-transform-regenerator",
+        [
+          "@babel/plugin-proposal-decorators",
+          {
+            "legacy": true
+          }
+        ],
+        "@babel/plugin-proposal-class-properties"
+      ]
+    }}
 }

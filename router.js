@@ -37,16 +37,16 @@ router.get('/redirect', async (ctx, next) => {
 
 //   await ctx.render('login');//views index.html
 // });
-router.get('/downloadFile',controller.base.downloadFile);
+router.get('/downloadFile', controller.base.downloadFile);
 
 router.get('/*', (ctx, next) => {
-console.log('last***')
-  const ignores=['public','/favicon.ico'];
-    if (ignores.some(p=>ctx.url.indexOf(p) != -1)) {
-      return true;
-    }
-    return next();
+  console.log('last***')
+  const ignores = ['public', '/favicon.ico'];
+  if (ignores.some(p => ctx.url.indexOf(p) != -1)) {
+    return true;
   }
-,filter.verify,controller.base.index);//SPA  返回页面
+  return next();
+}
+  , filter.verify, controller.base.index);//SPA  返回页面
 
 module.exports = router;

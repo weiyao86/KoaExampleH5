@@ -9,7 +9,6 @@ const common = require('./webpack.config.base.js');
 // const DashboardPlugin = require('webpack-dashboard/plugin');
 // const dashboard = new Dashboard();
 
-common.entry.main.unshift('react-hot-loader/patch');
 
 const WebPackCfg = merge(common, {
   mode: 'development', //"development" | "production" | "none"
