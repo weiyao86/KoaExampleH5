@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import classnames from 'classnames';
+import ProviderPage, { Provider, Consumer } from '@Client/components/globalContext';
 import './style.less';
 class Class extends Component {
 

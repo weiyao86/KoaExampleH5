@@ -1,7 +1,11 @@
 import React from 'react';
 import { message, Button, Avatar, Divider } from 'antd';
 import CustomTabs, { CustomTabPane } from './components/tabs';
+import ProviderPage, { GlobalContext, Provider, Consumer } from '@Client/components/globalContext';
+import classnames from 'classnames';
 import Modal from './modal';
+import TestContext from './testContext';
+import TestContext1 from './testContext1';
 import './style.less';
 
 
@@ -9,7 +13,7 @@ class Class extends React.Component {
   state = {
     imgUrl: '',
     visible: false,
-    touchs: 0,
+    touchs: 0, iv: 'ivtest'
   };
 
   constructor(props) {
@@ -185,6 +189,7 @@ class Class extends React.Component {
 
       // alert(this.orignWidth+'//'+this.orignHeight)
     }
+
   }
 
 
@@ -199,53 +204,92 @@ class Class extends React.Component {
       okPress: () => { this.setState({ visible: false }) },
       cancelPress: () => { this.setState({ visible: false }) },
     }
+    console.log(classnames({
+      'test': true,
+      'active': true
+    }))
+    console.log('this.context', this.context)
     return (
-      <div className="custom-page">
-        <CustomTabs>
-          <CustomTabPane
-            tab={<div>title1</div>}
-          >aaaaaaaaaaaaaaaaa
-          </CustomTabPane>
-          <CustomTabPane
-            tab={<div>title2</div>}
-          >tttttt
-          </CustomTabPane>
+      <ProviderPage>
+        <div className="custom-page">
 
-        </CustomTabs >
+          <CustomTabs>
+            <CustomTabPane
+              tab={<div>title1</div>}
+            >
+              <TestContext1>
+                <span style={{ color: '#f00', 'fontWeight': 'bold', 'fontSize': 40 }}> 测试Context中contextType属性</span>
+              </TestContext1>
+            </CustomTabPane>
+            <CustomTabPane
+              tab={<div>title3</div>}
+            >
+              <input type='text' defaultValue={'this is a defaultTValue'}></input>
+              <select ref="selectRef" value={this.state.sv} multiple={true} onChange={v => {
 
-        <label style={{ background: '#000', color: '#fff', padding: 20, margin: 20 }}>
-          看我上传文件后再下载
-          <input type='file' onChange={(e) => this.upload(e)} style={{ display: 'none' }} />
+                let { options } = v.target;
+                var arr = Object.keys(options).filter(ck => options[ck].selected).map(i => options[i].value);
 
-        </label>
-        <Avatar src={imgUrl} size={{ xs: 124, sm: 132, md: 140, lg: 164, xl: 180, xxl: 200 }} />
-        <Divider plain>Text</Divider>
-        <Button type='primary' onClick={() => this.downLoad()}>
-          my-Blob
-        </Button>
-        <Divider plain>my-Blob</Divider>
-        <a href='/downloadFile' target='_blank'>
-          ******下载流******
-        </a>
-        <Divider plain>下载流</Divider>
-        <Button type='primary' onClick={() => this.onOpenModal()}>
-          弹出Modal
-        </Button>
-        <Divider plain>自定义Modal</Divider>
+                console.log('vvv', arr)
+                this.setState({
+                  sv: arr
+                })
+              }}>
+                <option value="1">tttt</option>
+                <option value="2">1111</option>
+                <option value="3">2222</option>
+                <option value="4">2222</option>
+                <option value="5">2222</option>
+                <option value="6">2222</option>
+              </select>
+              <input
+                defaultValue={this.state.iv}
+                onChange={e => {
+                  this.setState({ iv: e.target.value.toUpperCase() })
+                }}
+              />
 
-        <Divider plain>图片放大缩小</Divider>
-        <div>
-          <p>图片放大缩小****{touchs}</p>
-          <div className="legend-wrap">
-            <div className="legend" ref={(e) => this.scaleImgRef = e} style={{ background: `url(${imgUrl})no-repeat center/contain transparent` }}>
-              <img src={imgUrl} />
+              <TestContext>
+                <span style={{ color: '#f00', 'fontWeight': 'bold', 'fontSize': 40 }}> 测试Context中Consumer组件</span>
+              </TestContext>
+            </CustomTabPane>
+
+          </CustomTabs >
+
+          <label ref="labelRef" style={{ background: '#000', color: '#fff', padding: 20, margin: 20 }}>
+            看我上传文件后再下载
+            <input type='file' onChange={(e) => this.upload(e)} style={{ display: 'none' }} />
+
+          </label>
+          <Avatar src={imgUrl} size={{ xs: 124, sm: 132, md: 140, lg: 164, xl: 180, xxl: 200 }} />
+          <Divider plain>Text</Divider>
+          <Button type='primary' onClick={() => this.downLoad()}>
+            my-Blob
+          </Button>
+          <Divider plain>my-Blob</Divider>
+          <a href='/downloadFile' target='_blank'>
+            ******下载流******
+          </a>
+          <Divider plain>下载流</Divider>
+          <Button type='primary' onClick={() => this.onOpenModal()}>
+            弹出Modal
+          </Button>
+          <Divider plain>自定义Modal</Divider>
+
+          <Divider plain>图片放大缩小</Divider>
+          <div>
+            <p>图片放大缩小****{touchs}</p>
+            <div className="legend-wrap">
+              <div className="legend" ref={(e) => this.scaleImgRef = e} style={{ background: `url(${imgUrl})no - repeat center / contain transparent` }}>
+                <img src={imgUrl} />
+              </div>
             </div>
           </div>
-        </div>
-        <Modal {...cfg}>
-          这是自定义children
-        </Modal>
-      </div >
+          <Modal {...cfg}>
+            这是自定义children
+          </Modal>
+        </div >
+      </ProviderPage>
     );
   }
 }

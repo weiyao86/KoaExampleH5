@@ -62,6 +62,7 @@ class Class extends React.Component {
     }
     return arr;
   }
+
   initDynamicMenu = (routes) => {
     let menu = [];
     routes.map((item) => {
